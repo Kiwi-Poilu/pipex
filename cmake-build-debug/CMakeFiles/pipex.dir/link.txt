@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/pipex.dir/srcs/main.c.o CMakeFiles/pipex.dir/srcs/ft_split.c.o CMakeFiles/pipex.dir/srcs/get_next_line.c.o CMakeFiles/pipex.dir/srcs/get_next_line_utils.c.o -o pipex 

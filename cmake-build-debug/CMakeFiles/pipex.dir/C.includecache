@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/include/get_next_line.h
+
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/include/pipex.h
+unistd.h
+-
+stdio.h
+-
+stdlib.h
+-
+get_next_line.h
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/include/get_next_line.h
+
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/srcs/ft_split.c
+../include/pipex.h
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/include/pipex.h
+
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/srcs/get_next_line.c
+../include/pipex.h
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/include/pipex.h
+
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/srcs/get_next_line_utils.c
+../include/pipex.h
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/include/pipex.h
+
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/srcs/main.c
+../include/pipex.h
+/mnt/nfs/homes/sobouatt/CLionProjects/pipex/include/pipex.h
+
