@@ -84,9 +84,10 @@ int main(int ac, char **av, char **envp) {
 	int fd1;
 	int fd2;
 	int fd3;
-
 	pid_t pid_1;
+	pid_t pid_2;
 	int tube[2];
+	int status;
 
 	printf("test\n");
 	pipe(tube);
@@ -114,19 +115,34 @@ int main(int ac, char **av, char **envp) {
 	else
 	{
 		i = 0;
-		
 		close(tube[1]);
 		printf("Salut depuis l'enfant\n");
 		fd2 = dup2(tube[0], STDIN_FILENO);
 		cmd2 = ft_split(av[3], ' ');
-		fd3 = open(av[4], O_CREAT | O_WRONLY | O_TRUNC, S_IROTH);
-		int dup_ret = dup2(fd3, STDOUT_FILENO);
-		printf("post dup %d->%d\n", fd3, dup_ret);
-		if (execve(find_valid_path(envp, cmd2[0]), cmd2, envp) < 0)
+		fd3 = open(av[4], O_CREAT | O_RDWR | O_TRUNC , 0644);
+		pid_2 = fork();
+		if (pid_2 < 0)
 		{
 			free_array(cmd2);
-			return (ft_error_dealer("Execve didn't work\n"));
+			ft_error_dealer("Creation of child process unsuccesful");
 		}
-		return (0);
+		if (pid_2 == 0)
+		{
+			dup2(fd3, STDOUT_FILENO);
+			if (execve(find_valid_path(envp, cmd2[0]), cmd2, envp) < 0)
+			{
+				free_array(cmd2);
+				return (ft_error_dealer("Execve didn't work\n"));
+			}
+		}
+		else
+		{
+			waitpid(pid_1, &status, 0);
+			printf("Cmd1 done\n");
+			waitpid(pid_2, &status, 0);
+			printf("Cmd2 done\n");
+			free_array(cmd2);
+			return (0);
+		}
 	}
 }
