@@ -8,6 +8,7 @@
 #include "get_next_line.h"
 #include <errno.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 char **ft_split(char *s, char separator);
 char *ft_strjoin(char *s1, char *s2);
